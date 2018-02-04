@@ -1,4 +1,10 @@
 <resources>
-    <string name="app_name">FootlongSubs</string>
+    <string name="app_name">Footlong Subs</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_add_sub">Add Subscription</string>
+    <string name="name">Name</string>
+    <string name="date">Date Started</string>
+    <string name="comment">Comment</string>
+    <string name="mthly_charge">Monthly Charge</string>
+    <string name="add_sub">Add Subscription</string>
 </resources>

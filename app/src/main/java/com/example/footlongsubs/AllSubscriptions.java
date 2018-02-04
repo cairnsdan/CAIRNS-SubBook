@@ -31,7 +31,7 @@ public class AllSubscriptions {
         // Add date
         try {
             newSub.setDate(startDate);
-        } catch (DATEEXCEPTION e) {
+        } catch (DateFormatException e) {
             // NOTIFY USER OF INCORRECT DATE
             return;
         }
@@ -39,7 +39,7 @@ public class AllSubscriptions {
         // Add monthly charge
         try {
             newSub.setCharge(mthlyCharge);
-        } catch (CHARGEEXCEPTION e) {
+        } catch (ChargeFormatException e) {
             // NOTIFY USER OF INCORRECT CHARGE
             return;
         }

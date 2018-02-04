@@ -1,6 +1,8 @@
 package com.example.footlongsubs;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -14,9 +16,12 @@ public class Subscription {
     private BigDecimal mthlyCharge;
     private String comment;
 
+    private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+
     public void Subscription () {}
 
-    public void setName(String newName) {
+    public void setName(String newName) throws NameTooLongException {
         if (newName.length() <= 20) {
             this.name = newName;
         } else {
@@ -28,31 +33,36 @@ public class Subscription {
         return this.name;
     }
 
-    public void setDate(String newStartDate) {
-        // Read string as date, convert using DateFormat??
-        this.startDate = newStartDate;
-        // Date error throw as well
+    public void setDate (String newStartDate)throws DateFormatException {
+        try {
+            this.startDate = dateFormat.parse(newStartDate);
+        } catch (ParseException e) {
+            throw new DateFormatException();
+        }
     }
 
     public Date getDate() {
         return this.startDate;
     }
 
-    public void setCharge(String newMthlyCharge) {
+    public void setCharge(String newMthlyCharge) throws ChargeFormatException {
         this.mthlyCharge.setScale(2);
-        this.mthlyCharge = new BigDecimal(newMthlyCharge);
-        // Throw exception if it happens
+        try {
+            this.mthlyCharge = new BigDecimal(newMthlyCharge);
+        } catch (NumberFormatException e) {
+            throw new ChargeFormatException();
+        }
     }
 
     public BigDecimal getCharge() {
         return this.mthlyCharge;
     }
 
-    public void setComment(String newComment) {
+    public void setComment(String newComment) throws CommentTooLongException {
         if (newComment.length() <= 30) {
             this.name = newComment;
         } else {
-            throw new NameTooLongException();
+            throw new CommentTooLongException();
         }
     }
 
