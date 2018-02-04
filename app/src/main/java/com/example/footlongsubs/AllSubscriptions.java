@@ -16,7 +16,8 @@ public class AllSubscriptions {
         subList = new ArrayList<Subscription>();
     }
 
-    public void addSubscription(String name, String startDate, String mthlyCharge, String comment) {
+    public void addSubscription(String name, String startDate, String mthlyCharge, String comment)
+                    throws InputErrorException {
 
         Subscription newSub = new Subscription();
 
@@ -24,32 +25,28 @@ public class AllSubscriptions {
         try {
             newSub.setName(name);
         } catch (NameTooLongException e) {
-            // NOTIFY USER THAT NAME WAS WRONG
-            return;
+            throw new InputErrorException();
         }
 
         // Add date
         try {
             newSub.setDate(startDate);
         } catch (DateFormatException e) {
-            // NOTIFY USER OF INCORRECT DATE
-            return;
+            throw new InputErrorException();
         }
 
         // Add monthly charge
         try {
             newSub.setCharge(mthlyCharge);
         } catch (ChargeFormatException e) {
-            // NOTIFY USER OF INCORRECT CHARGE
-            return;
+            throw new InputErrorException();
         }
 
         // Add comment
         try {
             newSub.setComment(comment);
         } catch (CommentTooLongException e) {
-            // NOTIFY USER THAT COMMENT WAS TOO LONG
-            return;
+            throw new InputErrorException();
         }
 
         // All fields read properly, add to subList
