@@ -9,7 +9,13 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
+
+    private AllSubscriptions subList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +23,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        subList = new AllSubscriptions();
+
+        // TEST CALL
+       // Date testDate = new Date();
+        //subList.addSubscription("Utility Bill", testDate, 200.12, "This is a comment");
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
