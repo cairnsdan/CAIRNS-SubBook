@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Footlong Subs</string>
+    <string name="app_name">cairns-SubBook</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_add_sub">Add Subscription</string>
     <string name="name">Name</string>
