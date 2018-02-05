@@ -10,6 +10,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ * The AddSubActivity class collects user inputs for adding a new activity and passes them
+ * back to the main activity. It is an I/O class and as such only passes it along as received.
+ *
+ * @author Daniel Cairns
+ * @see MainActivity
+ */
 public class AddSubActivity extends AppCompatActivity {
 
     @Override
@@ -31,12 +38,11 @@ public class AddSubActivity extends AppCompatActivity {
         addSubButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Capture user input
                 String name = nameInput.getText().toString();
                 String date = dateInput.getText().toString();
                 String charge = chargeInput.getText().toString();
                 String comment = commentInput.getText().toString();
-
-                // Verify user input
 
                 // Return input via returnIntent
                 Intent returnIntent = new Intent();

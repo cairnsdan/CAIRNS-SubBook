@@ -5,9 +5,14 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * Created by Dan on 2018-02-03.
+ * The AllSubscriptions class contains an ArrayList of Subscriptions as well as
+ * a number of methods to manage the list, including addition, deletion, and summing totals.
+ * This allows for more control and better separation of concerns than a regular ArrayList in
+ * the MainActivity class.
+ *
+ * @author Daniel Cairns
+ * @see Subscription
  */
-
 public class AllSubscriptions {
 
     private ArrayList<Subscription> subList;
@@ -18,6 +23,8 @@ public class AllSubscriptions {
 
     public void addSubscription(String name, String startDate, String mthlyCharge, String comment)
                     throws InputErrorException {
+        // Receives four strings from user input and sends them to each method invidually,
+        // allowing for individual exception handling (although not implemented here yet)
 
         Subscription newSub = new Subscription();
 
@@ -65,6 +72,7 @@ public class AllSubscriptions {
         BigDecimal total = new BigDecimal(0);
         total = total.setScale(2);
 
+        // Sum all elements in the array, from the end to the beginning
         int i = subList.size() - 1;
         while (i >= 0) {
             total = total.add(subList.get(i).getCharge());

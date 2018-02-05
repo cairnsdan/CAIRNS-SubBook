@@ -31,11 +31,27 @@ import java.util.Date;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+
+/**
+ * The MainActivity is the most important part of the app and bridges the UI and data elements
+ * It is reponsible for maintaining persistence, responding to button presses, and displaying
+ * the list and sum total.
+ *
+ * Unfortunately, I have been having trouble getting the list to display using the ListView
+ * widget, and so this activity is currently incomplete (2018/02/05)
+ *
+ * @author Daniel Cairns
+ * @see AllSubscriptions
+ * @see Subscription
+ * @see AddSubActivity
+ */
 public class MainActivity extends AppCompatActivity {
 
     private AllSubscriptions subList;
     private ListView displayList;
     static final int ADD_SUBSCRIPTION = 1;
+
+    // Filename for saved data
     private static final String FILENAME = "footlongsubs.sav";
 
     @Override
@@ -43,8 +59,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // W.I.P list display
         //displayList = (ListView) findViewById(R.id.displayList);
 
+        // Floating action button allows for addition of new subscription.
+        // Still working on finding a more appropriate icon.
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,11 +82,28 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    /**
+     * The onActivityResult method receives the user input data from other activity screens and
+     * sends it to an AllSubscriptions method for handling. The data is transferred in Strings
+     * to keep thing simple, and type conversions are done later.
+     *
+     * Currently, it handles the input from adding a new subscription (requestCode ADD_SUBSCRIPTION)
+     * Once the ListView is implemented properly, this method will also be responsible for
+     * passing the data for the edit and delete functions.
+     *
+     * @see AddSubActivity
+     *
+     * @param requestCode Code representing type of request returned, either addition or edit/delete
+     * @param resultCode Code notifying whether the activity result was ok or not
+     * @param data Intent which holds the strings from user input to be transferred
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ADD_SUBSCRIPTION) {
             if (resultCode == RESULT_OK) {
+                // Get data from intent
                 String name = data.getStringExtra("name");
                 String date = data.getStringExtra("date");
                 String charge = data.getStringExtra("charge");
@@ -78,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
                     updateTotal();
                     saveInFile();
                 } catch (InputErrorException e) {
+                    // Notify user that their input was rejected
                     AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
                     alertBuilder.setTitle("ERROR");
                     alertBuilder.setMessage("Incorrect input format detected, " +
@@ -89,6 +126,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Updates the monthly charges sum total when called
+     *
+     */
     protected void updateTotal() {
         //setContentView(R.layout.activity_main);
         String total = subList.sumCharges().toString();
@@ -97,6 +138,9 @@ public class MainActivity extends AppCompatActivity {
         displayBox.setText(message);
     }
 
+    /**
+     * Loads previously saved data from the file for persistence
+     */
     private void loadFromFile() {
 
         try {
@@ -118,6 +162,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Saves data in file for persistence
+     */
     private void saveInFile() {
         try {
             FileOutputStream fos = openFileOutput(FILENAME,

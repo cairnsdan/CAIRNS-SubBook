@@ -6,9 +6,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by Dan on 2018-02-03.
+ * The Subscription class holds the data for a single subscription and makes that
+ * data available through an array of getters and setters. The setters throw
+ * exceptions if the inputs are invalid.
+ *
+ * @author Daniel Cairns
+ * @see AllSubscriptions
  */
-
 public class Subscription {
 
     private String name;
@@ -16,11 +20,13 @@ public class Subscription {
     private BigDecimal mthlyCharge;
     private String comment;
 
+    // Desired date format expressed as a SimpleDateFormat
     private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-    public Subscription() {}
+    public Subscription() {} // Data set individually rather than all at once
 
     public void setName(String newName) throws NameTooLongException {
+        // Make sure name meets length requirement
         if (newName.length() <= 20) {
             this.name = newName;
         } else {
