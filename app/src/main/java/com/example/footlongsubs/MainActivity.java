@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -59,8 +60,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // W.I.P list display
-        //displayList = (ListView) findViewById(R.id.displayList);
+        // Setup list display
+        displayList = (ListView) findViewById(R.id.displayList);
+        displayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+        });
 
         // Floating action button allows for addition of new subscription.
         // Still working on finding a more appropriate icon.

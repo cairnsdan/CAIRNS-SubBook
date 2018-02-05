@@ -1,19 +1,4 @@
-#Sun Feb 04 22:59:42 MST 2018
-path.1=classes.dex
+#Mon Feb 05 08:18:33 MST 2018
+base.0=C\:\\Users\\Dan\\Documents\\GitHub\\footlong\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\57
 path.0=classes.dex
-renamed.5=classes6.dex
-renamed.4=classes5.dex
-renamed.3=classes4.dex
-renamed.2=classes3.dex
-renamed.1=classes2.dex
 renamed.0=classes.dex
-base.5=C\:\\Users\\Dan\\Documents\\GitHub\\footlong\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\52
-base.4=C\:\\Users\\Dan\\Documents\\GitHub\\footlong\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\55
-base.3=C\:\\Users\\Dan\\Documents\\GitHub\\footlong\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\50
-base.2=C\:\\Users\\Dan\\Documents\\GitHub\\footlong\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\53
-base.1=C\:\\Users\\Dan\\Documents\\GitHub\\footlong\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\51
-base.0=C\:\\Users\\Dan\\Documents\\GitHub\\footlong\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\54
-path.5=classes.dex
-path.4=classes.dex
-path.3=classes.dex
-path.2=classes.dex

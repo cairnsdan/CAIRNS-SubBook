@@ -2,10 +2,7 @@ package com.example.footlongsubs;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,10 +20,6 @@ public class AddSubActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_sub);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Read user input
         final EditText nameInput = (EditText) findViewById(R.id.nameField);
@@ -34,7 +27,7 @@ public class AddSubActivity extends AppCompatActivity {
         final EditText chargeInput = (EditText) findViewById(R.id.chargeField);
         final EditText commentInput = (EditText) findViewById(R.id.commentField);
 
-        Button addSubButton = (Button) findViewById(R.id.addSubButton);
+        Button addSubButton = (Button) findViewById(R.id.editSubButton);
         addSubButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

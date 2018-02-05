@@ -2,10 +2,13 @@
     <string name="app_name">cairns-SubBook</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_add_sub">Add Subscription</string>
+    <string name="title_activity_edit_sub">Edit Subscription</string>
     <string name="name">Name</string>
     <string name="date">Date Started</string>
     <string name="comment">Comment</string>
     <string name="mthly_charge">Monthly Charge</string>
     <string name="add_sub">Add Subscription</string>
+    <string name="edit_sub">Edit Subscription</string>
+    <string name="delete_sub">Delete Subscription</string>
     <string name="my_subs">My Subscriptions</string>
 </resources>
