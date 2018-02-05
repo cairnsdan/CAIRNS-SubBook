@@ -13,6 +13,7 @@ import android.widget.EditText;
  *
  * @author Daniel Cairns
  * @see MainActivity
+ * @see EditSubActivity
  */
 public class AddSubActivity extends AppCompatActivity {
 

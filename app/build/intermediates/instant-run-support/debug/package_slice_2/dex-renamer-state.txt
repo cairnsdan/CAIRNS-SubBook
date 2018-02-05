@@ -1,4 +1,4 @@
-#Mon Feb 05 13:24:18 MST 2018
+#Mon Feb 05 15:46:48 MST 2018
 base.0=C\:\\Users\\Dan\\Documents\\GitHub\\footlong\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\79
 path.0=classes.dex
 renamed.0=classes.dex

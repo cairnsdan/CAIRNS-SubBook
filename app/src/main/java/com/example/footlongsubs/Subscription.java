@@ -1,5 +1,6 @@
 package com.example.footlongsubs;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,7 +14,7 @@ import java.util.Date;
  * @author Daniel Cairns
  * @see AllSubscriptions
  */
-public class Subscription {
+public class Subscription implements Serializable {
 
     private String name;
     private Date startDate;

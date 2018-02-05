@@ -65,15 +65,16 @@ public class MainActivity extends AppCompatActivity {
         // Setup list display
         displayList = (ListView) findViewById(R.id.displayList);
 
-       /* displayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        displayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(MainActivity.this, EditSubActivity.class);
-                //Add data from object corresponding to view to intent
-                //intent.putExtra(name,date,charge,comment)
+                Subscription clickedSub = (Subscription) adapterView.getItemAtPosition(i);
+                intent.putExtra("subscription", clickedSub);
+                startActivityForResult(intent, EDIT_SUBSCRIPTION);
             }
         });
-*/
+
         // Floating action button allows for addition of new subscription.
         // Still working on finding a more appropriate icon.
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -138,6 +139,55 @@ public class MainActivity extends AppCompatActivity {
                             "subscription not added");
                     alertBuilder.setPositiveButton("OK", null);
                     alertBuilder.show();
+                }
+            }
+        }
+        if (requestCode == EDIT_SUBSCRIPTION) {
+            if (resultCode == RESULT_OK) {
+                // If deleted, delete
+                if (data.getStringExtra("deleted")=="true") {
+                    subList.deleteSubscription(
+                        (Subscription) data.getSerializableExtra("subscription")
+                    );
+
+                    // Update Lists
+                    updateTotal();
+                    displayListAdapter.notifyDataSetChanged();
+                    saveInFile();;
+                }
+                // Else, save user edits
+                else {
+                    Subscription editedSub =
+                            (Subscription) data.getSerializableExtra("subscription");
+                    String name = data.getStringExtra("name");
+                    String date = data.getStringExtra("date");
+                    String charge = data.getStringExtra("charge");
+                    String comment = data.getStringExtra("comment");
+
+                    try {
+                        editedSub.setName(name);
+                        editedSub.setDate(date);
+                        editedSub.setCharge(charge);
+                        editedSub.setComment(comment);
+
+                        // If no exceptions occur
+                        updateTotal();
+                        displayListAdapter.notifyDataSetChanged();
+                        saveInFile();
+
+
+
+                    } catch (NameTooLongException | DateFormatException | ChargeFormatException |
+                            CommentTooLongException e){
+                        // Notify user that their input was rejected
+                        // Note that this might result in half-edited entries as currently coded
+                        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
+                        alertBuilder.setTitle("ERROR");
+                        alertBuilder.setMessage("Incorrect input format detected, " +
+                                "edit unsuccessful");
+                        alertBuilder.setPositiveButton("OK", null);
+                        alertBuilder.show();
+                    }
                 }
             }
         }

@@ -68,9 +68,9 @@ public class AllSubscriptions {
         this.size--;
     }
 
-    public ArrayList<Subscription> getSubList() {
-        return subList;
-    }
+    //public ArrayList<Subscription> getSubList() {
+    //    return subList;
+    //}
 
     public BigDecimal sumCharges() {
         BigDecimal total = new BigDecimal(0);
