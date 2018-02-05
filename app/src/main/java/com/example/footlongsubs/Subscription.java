@@ -50,6 +50,11 @@ public class Subscription {
         return this.startDate;
     }
 
+    // Return date as string
+    public String getDate_s() {
+        return dateFormat.format(this.startDate);
+    }
+
     public void setCharge(String newMthlyCharge) throws ChargeFormatException {
         try {
             this.mthlyCharge = new BigDecimal(newMthlyCharge);
@@ -63,9 +68,16 @@ public class Subscription {
         return this.mthlyCharge;
     }
 
+    // Return charge as string
+    public String getCharge_s() {
+        String returnString;
+        returnString = "$ " + this.mthlyCharge.toString();
+        return returnString;
+    }
+
     public void setComment(String newComment) throws CommentTooLongException {
         if (newComment.length() <= 30) {
-            this.name = newComment;
+            this.comment = newComment;
         } else {
             throw new CommentTooLongException();
         }

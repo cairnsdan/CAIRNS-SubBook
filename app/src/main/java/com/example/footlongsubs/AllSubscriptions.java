@@ -16,9 +16,11 @@ import java.util.Date;
 public class AllSubscriptions {
 
     private ArrayList<Subscription> subList;
+    private int size;
 
     public AllSubscriptions() {
         subList = new ArrayList<Subscription>();
+        this.size = 0;
     }
 
     public void addSubscription(String name, String startDate, String mthlyCharge, String comment)
@@ -58,10 +60,12 @@ public class AllSubscriptions {
 
         // All fields read properly, add to subList
         subList.add(newSub);
+        this.size++;
     }
 
     public void deleteSubscription(Subscription deletedSub) {
         subList.remove(deletedSub);
+        this.size--;
     }
 
     public ArrayList<Subscription> getSubList() {
@@ -80,6 +84,14 @@ public class AllSubscriptions {
         }
 
         return total;
+    }
+
+    public int getSize() {
+        return this.size;
+    }
+
+    public Subscription getSub(int position) {
+        return this.subList.get(position);
     }
 
 }

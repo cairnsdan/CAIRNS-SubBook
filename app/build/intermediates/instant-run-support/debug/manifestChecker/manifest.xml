@@ -36,6 +36,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.footlongsubs.MainActivity" />
         </activity>
+        <activity android:name="com.example.footlongsubs.EditSubActivity" />
 
         <meta-data
             android:name="android.support.VERSION"

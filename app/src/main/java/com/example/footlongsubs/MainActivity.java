@@ -38,8 +38,7 @@ import com.google.gson.reflect.TypeToken;
  * It is reponsible for maintaining persistence, responding to button presses, and displaying
  * the list and sum total.
  *
- * Unfortunately, I have been having trouble getting the list to display using the ListView
- * widget, and so this activity is currently incomplete (2018/02/05)
+ * The only thing missing is the edit activity switches
  *
  * @author Daniel Cairns
  * @see AllSubscriptions
@@ -50,7 +49,10 @@ public class MainActivity extends AppCompatActivity {
 
     private AllSubscriptions subList;
     private ListView displayList;
+    private CustomAdapter displayListAdapter;
+
     static final int ADD_SUBSCRIPTION = 1;
+    static final int EDIT_SUBSCRIPTION = 2;
 
     // Filename for saved data
     private static final String FILENAME = "footlongsubs.sav";
@@ -62,21 +64,24 @@ public class MainActivity extends AppCompatActivity {
 
         // Setup list display
         displayList = (ListView) findViewById(R.id.displayList);
-        displayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+       /* displayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                Intent intent = new Intent(MainActivity.this, EditSubActivity.class);
+                //Add data from object corresponding to view to intent
+                //intent.putExtra(name,date,charge,comment)
             }
         });
-
+*/
         // Floating action button allows for addition of new subscription.
         // Still working on finding a more appropriate icon.
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, AddSubActivity.class);
-                startActivityForResult(i, ADD_SUBSCRIPTION);
+                Intent intent = new Intent(MainActivity.this, AddSubActivity.class);
+                startActivityForResult(intent, ADD_SUBSCRIPTION);
             }
         });
     }
@@ -86,6 +91,10 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         loadFromFile();
         updateTotal();
+
+        displayListAdapter = new CustomAdapter(this, subList);
+        displayList.setAdapter(displayListAdapter);
+
 
     }
 
@@ -119,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     subList.addSubscription(name, date, charge, comment);
                     updateTotal();
+                    displayListAdapter.notifyDataSetChanged();
                     saveInFile();
                 } catch (InputErrorException e) {
                     // Notify user that their input was rejected
