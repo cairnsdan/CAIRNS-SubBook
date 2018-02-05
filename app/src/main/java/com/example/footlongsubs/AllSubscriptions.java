@@ -12,7 +12,7 @@ public class AllSubscriptions {
 
     private ArrayList<Subscription> subList;
 
-    public void AlLSubscriptions() {
+    public AllSubscriptions() {
         subList = new ArrayList<Subscription>();
     }
 

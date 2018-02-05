@@ -18,8 +18,7 @@ public class Subscription {
 
     private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-
-    public void Subscription () {}
+    public Subscription() {}
 
     public void setName(String newName) throws NameTooLongException {
         if (newName.length() <= 20) {
@@ -46,9 +45,9 @@ public class Subscription {
     }
 
     public void setCharge(String newMthlyCharge) throws ChargeFormatException {
-        this.mthlyCharge.setScale(2);
         try {
             this.mthlyCharge = new BigDecimal(newMthlyCharge);
+            this.mthlyCharge.setScale(2);
         } catch (NumberFormatException e) {
             throw new ChargeFormatException();
         }

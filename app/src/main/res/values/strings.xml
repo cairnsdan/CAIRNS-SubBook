@@ -7,4 +7,5 @@
     <string name="comment">Comment</string>
     <string name="mthly_charge">Monthly Charge</string>
     <string name="add_sub">Add Subscription</string>
+    <string name="my_subs">My Subscriptions</string>
 </resources>
